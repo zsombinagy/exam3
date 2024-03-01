@@ -59,7 +59,7 @@ app.post("/api/users/registration", async (req, res) => {
     const checkThatIsExist = existUsers.find(user => user.email === newUser.email)
 
     if (checkThatIsExist !== undefined) {
-        res.json("this email already exists")
+        res.status(409).json({error: "this email already exists"})
         return
     }
     const id = Math.random()
